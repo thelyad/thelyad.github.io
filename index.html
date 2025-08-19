@@ -198,7 +198,7 @@ body {
 }
 
 a {
-    color: #4183C4;
+    color: #2c5aa0;
 }
 h1,
 h2,
@@ -517,10 +517,31 @@ header, .context-menu, .megamenu-content, footer{
 }
 
  .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+
+/* Navigation hover effects */
+nav a:hover {
+    color: #2c5aa0 !important;
+}
+
+/* Fix anchor scroll offset for sticky navigation */
+html {
+    scroll-padding-top: 80px;
+}
 </style>
 </head>
 <body class='typora-export' >
 <div  id='write'  class = 'is-mac'>
+	<nav style="padding: 20px 0; margin-bottom: 40px; border-bottom: 1px solid #eee; text-align: center; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000;">
+		<!-- <a href="#jocelyn-qiaochu-chen" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 400; font-size: 14px; letter-spacing: 0.5px; display: inline-block;">About</a> -->
+		<a href="#interests" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 400; font-size: 14px; letter-spacing: 0.5px; display: inline-block;">Research</a>
+		<a href="#publications" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 400; font-size: 14px; letter-spacing: 0.5px; display: inline-block;">Publications</a>
+		<a href="#teaching" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 400; font-size: 14px; letter-spacing: 0.5px; display: inline-block;">Teaching</a>
+		<a href="#service" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 400; font-size: 14px; letter-spacing: 0.5px; display: inline-block;">Service</a>
+		<a href="#students" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 400; font-size: 14px; letter-spacing: 0.5px; display: inline-block;">Students</a>
+		<!-- <a href="#prospective" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 400; font-size: 14px; letter-spacing: 0.5px; display: inline-block;">Prospective</a> -->
+		<!-- <a href="#scheduling" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 400; font-size: 14px; letter-spacing: 0.5px; display: inline-block;">Schedule</a> -->
+		<a href="#personal" style="margin: 0 15px; text-decoration: none; color: #333; font-weight: 400; font-size: 14px; letter-spacing: 0.5px; display: inline-block;">Personal</a>
+	</nav>
 	<h3><a name="jocelyn-qiaochu-chen" class="md-header-anchor"></a><span> Jocelyn Qiaochu Chen</span></h3>
     <p><span>Email: qc1127 [at] cs.nyu.edu  |  Office: 60 5th Ave, Room 418  | </span><a href='https://twitter.com/jocelynqchen'><span>Twitter</span></a><span> | <a href='https://scholar.google.com/citations?hl=en&user=N2Kt7csAAAAJ&view_op=list_works&sortby=pubdate'><span>Google Scholar</span></a> | <a href='https://orcid.org/0000-0003-4680-5157'><span>ORCID</span></a></p>
 	<table>
@@ -552,7 +573,7 @@ header, .context-menu, .megamenu-content, footer{
 	<ul>
 		<li><a href="https://arxiv.org/abs/2504.15254"><span>CRUST-Bench: A Comprehensive Benchmark for C-to-safe-Rust Transpilation</span></a><span>. Anirudh Khatry, Robert Zhang, Jia Pan, Ziteng Wang, Jocelyn Chen, Greg Durrett, Isil Dillig. COLM 2025.</span></li>
 		<li><a href="https://arxiv.org/abs/2503.24036"><span>Automated Discovery of Tactic Libraries for Interactive Theorem Proving</span></a><span>. Maxine Xin, Jimmy Xin, Gabriel Poesia, Noah Goodman, Jocelyn Chen, Isil Dillig. OOPSLA 2025.</span></li>
-		<li><a href="#"><span>Active Learning for Neurosymbolic Program Synthesis</span></a><span>. Celeste Barnaby, Jocelyn Chen, Ramya Ramanlingam, Osbert Bastani, Isil Dillig. OOPSLA 2025 (Conditionally accepted).</span></li>
+		<li><a href="#"><span>Active Learning for Neurosymbolic Program Synthesis</span></a><span>. Celeste Barnaby, Jocelyn Chen, Ramya Ramanlingam, Osbert Bastani, Isil Dillig. OOPSLA 2025.</span></li>
 		<li><a href="https://arxiv.org/abs/2401.10464"><span>PhotoScout: Synthesis-Powered Multi-Modal Image Search</span></a><span>. Celeste Barnaby, Jocelyn Chen, Chenglong Wang, Isil Dillig. CHI 2024. </span></li>
 		<li><a href="https://arxiv.org/abs/2305.09656"><span>Satisfiability-Aided Language Models Using Declarative Prompting</span></a><span>. Xi Ye, Jocelyn Chen, Isil Dillig, Greg Durrett. Neurips 2023. </span><a href="https://github.com/xiye17/sat-lm"><em><span>Code</span></em></a></li>
 		<li><a href="https://arxiv.org/abs/2305.10401"><span>Data Extraction via Semantic Regular Expression Synthesis</span></a><span>. Jocelyn Chen, Arko Banerjee, Çağatay Demiralp, Greg Durrett, Isil Dillig. OOPSLA 2023. </span><a href="https://github.com/utopia-group/Smore"><em><span>Code</span></em></a></li>
@@ -596,7 +617,7 @@ header, .context-menu, .megamenu-content, footer{
 	</p>
 
     <h4><a name="personal" class="md-header-anchor"></a><span>Personal</span></h4>
-    <p>I am originally from <a href="https://en.wikipedia.org/wiki/Nanjing">Nanjing</a>, China. I go by Jocelyn, though my publications appear under Qiaochu Chen (which is written in Chinese as 陈<a href="https://en.wiktionary.org/wiki/%E7%BF%B9%E6%A5%9A">翘楚</a>).</p>
+    <p>I am originally from <a href="https://en.wikipedia.org/wiki/Nanjing">Nanjing</a>, China. I go by Jocelyn, though my publications appear under Qiaochu Chen (written as 陈<a href="https://en.wiktionary.org/wiki/%E7%BF%B9%E6%A5%9A">翘楚</a> in Chinese).</p>
 <p>&nbsp;</p>
 <footer>Last update: Aug 2025</footer>
 
