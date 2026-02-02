@@ -10,13 +10,52 @@ HTML_DIR = os.path.join(ROOT, 'posts', 'html')
 MD_DIR = os.path.join(ROOT, 'posts', 'md')
 INDEX_PATH = os.path.join(ROOT, 'posts', 'index.html')
 
+def extract_title(html_name):
+    """Extract the first h1 from the HTML file, falling back to the md source."""
+    html_path = os.path.join(HTML_DIR, html_name)
+    base = os.path.splitext(html_name)[0]
+    md_path = os.path.join(MD_DIR, base + '.md')
+
+    # Try markdown first (more reliable)
+    if os.path.isfile(md_path):
+        with open(md_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                m = re.match(r'^#\s+(.+)$', line.strip())
+                if m:
+                    return m.group(1).strip()
+
+    # Fall back to HTML <h1>
+    if os.path.isfile(html_path):
+        with open(html_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        m = re.search(r'<h1[^>]*>(.*?)</h1>', content, re.IGNORECASE)
+        if m:
+            return m.group(1).strip()
+
+    return None
+
+def parse_date_from_filename(name):
+    """Extract the date prefix from a filename like 'Feb 1, 2026 - Title.html'."""
+    base = os.path.splitext(name)[0]
+    m = re.match(r'^(.+?)\s*-\s+', base)
+    if m:
+        return m.group(1).strip()
+    return None
+
 def collect_posts():
+    """Return list of (filename, display_title) tuples."""
     if not os.path.isdir(HTML_DIR):
         return []
     items = []
     for name in sorted(os.listdir(HTML_DIR)):
         if name.lower().endswith('.html'):
-            items.append(name)
+            base = os.path.splitext(name)[0]
+            title = extract_title(name)
+            if title:
+                display = f"{base} - {title}"
+            else:
+                display = base
+            items.append((name, display))
     return items
 
 def ensure_dirs():
@@ -154,7 +193,7 @@ def compile_md_posts():
 def render(posts):
     last_update = datetime.now().strftime('%b %Y')
     li = "\n".join(
-        f"    <li><a href=\"./html/{name}\">{name}</a></li>" for name in posts
+        f"    <li><a href=\"./html/{name}\">{display}</a></li>" for name, display in posts
     ) or "    <!-- No posts found in posts/html -->"
     return f"""<!doctype html>
 <html>
@@ -190,7 +229,7 @@ def main():
     os.makedirs(os.path.dirname(INDEX_PATH), exist_ok=True)
     with open(INDEX_PATH, 'w', encoding='utf-8') as f:
         f.write(html)
-    print(f"Compiled {len(compiled)} markdown file(s). Wrote {INDEX_PATH} with {len(posts)} entr(ies)")
+    print(f"Compiled {len(compiled)} markdown file(s). Wrote {INDEX_PATH} with {len(posts)} entry(ies)")
 
 if __name__ == '__main__':
     main()
